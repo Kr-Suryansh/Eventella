@@ -1,0 +1,509 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Great+Vibes:wght@400&family=Allura:wght@400&family=Alex+Brush:wght@400&family=Arizonia:wght@400&display=swap');
+
+/* Global Styles */
+* {
+  @apply transition-all duration-300;
+}
+
+.btn-primary {
+  position: relative;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  /* Use brand gold background */
+  background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #ffefb0 100%);
+  color: #2b1f07;
+  box-shadow: 0 10px 30px rgba(210,160,90,0.25);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.22);
+  transition: left 0.4s ease;
+  z-index: 1;
+}
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(210,160,90,0.28);
+}
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Gradient Text Effects */
+.text-gradient {
+  background: linear-gradient(135deg, #E91E63 0%, #d946a6 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Elegant Cursive Font */
+.font-cursive {
+  /* Prefer Alex Brush for the brand, fallback to Great Vibes and Allura */
+  font-family: 'Alex Brush', 'Great Vibes', 'Allura', cursive;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+}
+
+/* Small brand cursive for inline labels (does NOT change font-size) */
+.brand-cursive {
+  font-family: 'Alex Brush', 'Great Vibes', 'Allura', cursive;
+  font-weight: 400;
+  font-size: inherit; /* keep surrounding size */
+  line-height: 1;
+}
+
+/* Arizonia font utilities for hero heading and subtext */
+.font-arizonia {
+  font-family: 'Arizonia', cursive;
+}
+.font-arizonia-lg {
+  font-family: 'Arizonia', cursive;
+  font-size: 4rem; /* tuned for hero */
+  line-height: 1;
+}
+.font-arizonia-sm {
+  font-family: 'Arizonia', cursive;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+/* Brand golden gradient text utility */
+.brand-gradient-text {
+  /* Refined warm gold gradient tuned to surrounding palette */
+  background: linear-gradient(90deg, #c7a252 0%, #f0c25a 45%, #ffefb0 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  /* subtle metallic sheen animation */
+  animation: gradientShift 6s linear infinite;
+  /* tiny shadow to improve legibility on busy backgrounds */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.06), 0 6px 18px rgba(199,142,54,0.08);
+}
+
+/* Button / solid variant for gold accents (background) */
+.brand-gold-bg {
+  background: linear-gradient(135deg, #d4af37 0%, #f6d365 50%, #ffefb0 100%);
+  color: #3b2b0b; /* dark warm text for contrast */
+  box-shadow: 0 8px 24px rgba(210,160,90,0.18);
+}
+
+/* Simple golden icon color fallback */
+.brand-icon {
+  color: #a16207; /* warmer amber */
+  filter: drop-shadow(0 2px 6px rgba(161,98,7,0.12));
+}
+
+/* Brand cursive tuned for headings (uses Alex Brush) */
+.brand-cursive-heading {
+  font-family: 'Alex Brush', 'Great Vibes', cursive;
+  font-size: inherit; /* match surrounding heading size */
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  display: inline-block;
+}
+
+/* Gold gradient utilities for components */
+.bg-gold-blob {
+  background: linear-gradient(135deg, rgba(199,162,82,0.10) 0%, rgba(246,210,122,0.10) 100%);
+}
+
+.bg-gold-pill {
+  background: linear-gradient(90deg, #d4af37 0%, #f6d365 50%, #ffefb0 100%);
+}
+
+.bg-gold-strong {
+  background: linear-gradient(90deg, #c79b3a 0%, #f0c25a 50%, #ffd77a 100%);
+  color: #422c04;
+}
+
+.accent-gold-bar {
+  background: linear-gradient(180deg, #d4af37 0%, #f6d365 100%);
+}
+
+/* Navigation link gold hover effect */
+.nav-link-gold {
+  transition: all 0.3s ease;
+}
+.nav-link-gold:hover {
+  color: transparent;
+  background: linear-gradient(90deg, #c79b3a 0%, #f0c25a 50%, #ffd77a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.underline-gold {
+  background: linear-gradient(90deg, #c79b3a 0%, #f0c25a 50%, #ffd77a 100%);
+}
+
+.font-cursive-lg {
+  font-family: 'Great Vibes', 'Allura', cursive;
+  font-size: 5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.font-cursive-sm {
+  font-family: 'Great Vibes', 'Allura', cursive;
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+/* Alex Brush utility */
+/* Alex Brush utility (removed) */
+/* Previously defined .font-alexbrush removed to revert styling for the tagline. */
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Premium Gradient Border */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.3) 0%, rgba(168, 85, 247, 0.3) 100%);
+  border-radius: 1.5rem;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Buttons - Enhanced */
+.btn-primary {
+  position: relative;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #E91E63 0%, #d946a6 100%);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: left 0.4s ease;
+  z-index: 1;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  position: relative;
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #D4A574 0%, #c9935f 100%);
+  color: white;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(212, 165, 116, 0.4);
+}
+
+.btn-outline {
+  position: relative;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  border: 2px solid #E91E63;
+  color: #E91E63;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #E91E63;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+}
+
+/* Premium Cards - Enhanced */
+.card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 248, 255, 0.9) 100%);
+  border-radius: 1.75rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(233, 30, 99, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  box-shadow: 0 20px 50px rgba(233, 30, 99, 0.15);
+  border-color: rgba(233, 30, 99, 0.2);
+}
+
+.card-hover {
+  transform: translateY(-12px) scale(1.02);
+}
+
+/* Input Styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(233, 30, 99, 0.1);
+  border-radius: 0.875rem;
+  padding: 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background: white;
+  border-color: #E91E63;
+  box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.4), 0 0 40px rgba(233, 30, 99, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(233, 30, 99, 0.6), 0 0 60px rgba(233, 30, 99, 0.3);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes glow-rotate {
+  0% {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.3);
+  }
+}
+
+@keyframes subtle-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-glow-rotate {
+  animation: glow-rotate 3s ease-in-out infinite;
+}
+
+.animate-subtle-scale {
+  animation: subtle-scale 3s ease-in-out infinite;
+}
+
+/* Artistic Elements */
+.blob {
+  position: absolute;
+  /* warm golden blobs to match brand */
+  background: linear-gradient(135deg, rgba(199, 162, 82, 0.10) 0%, rgba(246, 210, 122, 0.10) 100%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: blob 7s infinite;
+  filter: blur(40px);
+}
+
+.blob-1 {
+  width: 300px;
+  height: 300px;
+  top: -100px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  left: -50px;
+  animation-delay: 2s;
+}
+
+/* Divider Lines */
+.divider-gradient {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #E91E63, transparent);
+  border-radius: 2px;
+}
+
+/* Badge Styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border-radius: 9999px;
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #E91E63;
+  backdrop-filter: blur(10px);
+}
+
+/* Glass Effect */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    @apply text-3xl;
+    letter-spacing: -0.015em;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-outline {
+    padding: 0.75rem 1.5rem;
+  }
+}
