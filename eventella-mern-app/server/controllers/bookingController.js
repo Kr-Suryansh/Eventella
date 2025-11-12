@@ -47,7 +47,11 @@ const getMyBookings = async (req, res) => {
       'event',
       'title date location imageURL'
     );
-    res.json(bookings);
+    
+    // Filter out bookings where the event was deleted (event is null)
+    const validBookings = bookings.filter(booking => booking.event !== null);
+    
+    res.json(validBookings);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

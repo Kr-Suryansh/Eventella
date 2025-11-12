@@ -42,13 +42,17 @@ const Dashboard = () => {
   return (
     <div className="max-w-4xl mx-auto">
       <h1 className="text-3xl font-bold mb-8">My Bookings</h1>
-      {bookings.length === 0 ? (
+      {bookings.filter(booking => booking.event).length === 0 ? (
         <p className="text-center text-gray-600">You have no bookings yet.</p>
       ) : (
         <div className="space-y-6">
-          {bookings.map((booking) => (
+          {bookings.filter(booking => booking.event).map((booking) => (
             <div key={booking._id} className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row">
-              <img src={booking.event.imageURL} alt={booking.event.title} className="w-full md:w-1/3 h-48 object-cover rounded-md mb-4 md:mb-0 md:mr-6" />
+              <img 
+                src={booking.event.imageURL || '/api/placeholder/400/300'} 
+                alt={booking.event.title} 
+                className="w-full md:w-1/3 h-48 object-cover rounded-md mb-4 md:mb-0 md:mr-6" 
+              />
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">{booking.event.title}</h2>
                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
