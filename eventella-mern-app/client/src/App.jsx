@@ -1,3 +1,10 @@
+/**
+ * File: client/src/App.jsx
+ * Purpose: Define top-level routes and apply auth/role guards.
+ * - Public: Home, Login, Register, EventDetails
+ * - Protected: Book, Confirmation, Dashboard (wrapped in ProtectedRoute)
+ * - Admin-only: AdminDashboard (wrapped in AdminRoute)
+ */
 import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -24,14 +31,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/event/:id" element={<EventDetails />} />
           
-          {/* Protected Routes */}
+          {/* Protected Routes (user must be authenticated) */}
           <Route element={<ProtectedRoute />}>
             <Route path="/book/:id" element={<BookingPage />} />
-            <Route path="/confirmation" element_={<ConfirmationPage />} />
+            <Route path="/confirmation" element={<ConfirmationPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
 
-          {/* Admin Routes */}
+          {/* Admin Routes (user must have role 'admin') */}
           <Route element={<AdminRoute />}>
             <Route path="/admin" element={<AdminDashboard />} />
           </Route>

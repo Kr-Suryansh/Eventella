@@ -1,3 +1,4 @@
+// Site-wide footer with brand, link placeholders, and social icons
 import React from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaCalendarAlt } from 'react-icons/fa';
 

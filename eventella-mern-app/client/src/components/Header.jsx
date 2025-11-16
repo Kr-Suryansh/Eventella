@@ -1,3 +1,14 @@
+/**
+ * File: client/src/components/Header.jsx
+ * Purpose: Global navigation header with responsive layout and auth-aware links.
+ *
+ * State:
+ * - mobileMenuOpen: toggles mobile navigation panel
+ *
+ * Behavior:
+ * - Shows Dashboard/Admin links when user is authenticated (role-based)
+ * - Logout clears auth and returns to /login
+ */
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { FaCalendarAlt, FaBars, FaTimes } from 'react-icons/fa';

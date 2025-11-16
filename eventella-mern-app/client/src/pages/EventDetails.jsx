@@ -1,3 +1,11 @@
+/**
+ * File: client/src/pages/EventDetails.jsx
+ * Purpose: Show single event details and allow seat selection prior to booking.
+ *
+ * Routing:
+ * - URL param `id` identifies the event to fetch
+ * - On booking: navigates to `/book/:id` with state { event, seats }
+ */
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getEventById } from '../api/events';
@@ -13,6 +21,7 @@ const EventDetails = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
+  // Load event details when id changes
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -29,6 +38,7 @@ const EventDetails = () => {
     fetchEvent();
   }, [id, navigate]);
 
+  // If unauthenticated, send to login; else proceed to booking with state
   const handleBooking = () => {
     if (!user) {
       navigate('/login', { state: { from: `/event/${id}` } });

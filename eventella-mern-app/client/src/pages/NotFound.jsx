@@ -1,3 +1,4 @@
+// Generic 404 page for unmatched routes
 import React from 'react';
 import { Link } from 'react-router-dom';
 

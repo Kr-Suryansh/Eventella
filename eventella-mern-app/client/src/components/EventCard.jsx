@@ -1,3 +1,13 @@
+/**
+ * File: client/src/components/EventCard.jsx
+ * Purpose: Display a single event with image, details, and CTA; links to details page.
+ *
+ * Props:
+ * - event: { _id, title, imageURL, location, date, price, category }
+ *
+ * State:
+ * - isWishlisted: local UI-only toggle for wishlist heart
+ */
 import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaCalendar, FaRupeeSign, FaHeart, FaStar } from 'react-icons/fa';
 import { useState } from 'react';

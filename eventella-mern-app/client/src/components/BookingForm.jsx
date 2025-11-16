@@ -1,3 +1,4 @@
+// Minimal placeholder booking form (unused in primary flow)
 import React from 'react';
 
 export default function BookingForm() {

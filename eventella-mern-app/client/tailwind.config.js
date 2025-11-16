@@ -1,3 +1,8 @@
+/**
+ * Tailwind configuration for the client app.
+ * - Scans index.html and all files under src/ for class usage
+ * - Extends theme with brand colors, animations, and fonts
+ */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],

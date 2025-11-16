@@ -1,3 +1,7 @@
+/**
+ * File: client/src/main.jsx
+ * Purpose: Client bootstrap — mounts Router, AuthProvider, and App into #root.
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

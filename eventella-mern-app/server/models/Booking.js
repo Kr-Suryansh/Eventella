@@ -1,3 +1,16 @@
+/**
+ * File: server/models/Booking.js
+ * Purpose: Represent a user's reservation for an Event.
+ *
+ * Relations:
+ * - user -> User reference
+ * - event -> Event reference
+ *
+ * Business fields:
+ * - seats: number of seats reserved
+ * - totalPrice: calculated at creation (event.price * seats)
+ * - status: lifecycle state (Confirmed | Cancelled)
+ */
 import mongoose from 'mongoose';
 
 const bookingSchema = mongoose.Schema(

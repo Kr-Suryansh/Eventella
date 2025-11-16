@@ -1,9 +1,18 @@
+/**
+ * File: server/controllers/bookingController.js
+ * Purpose: Handle booking lifecycle — create, list (self/admin), and cancel.
+ */
 import Booking from '../models/Booking.js';
 import Event from '../models/Event.js';
 
 // @desc    Create new booking
 // @route   POST /api/bookings
 // @access  Private
+/**
+ * POST /api/bookings
+ * Body: { eventId, seats }
+ * Validates availability, reserves seats, and persists the booking.
+ */
 const createBooking = async (req, res) => {
   const { eventId, seats } = req.body;
 
@@ -41,6 +50,10 @@ const createBooking = async (req, res) => {
 // @desc    Get logged in user bookings
 // @route   GET /api/bookings/mybookings
 // @access  Private
+/**
+ * GET /api/bookings/mybookings
+ * Returns current user's bookings; filters out records for deleted events.
+ */
 const getMyBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({ user: req.user._id }).populate(
@@ -60,6 +73,10 @@ const getMyBookings = async (req, res) => {
 // @desc    Get all bookings (Admin)
 // @route   GET /api/bookings
 // @access  Private/Admin
+/**
+ * GET /api/bookings (admin)
+ * Returns all bookings with shallow user and event info populated.
+ */
 const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({})
@@ -74,6 +91,10 @@ const getAllBookings = async (req, res) => {
 // @desc    Cancel a booking
 // @route   PUT /api/bookings/:id/cancel
 // @access  Private
+/**
+ * PUT /api/bookings/:id/cancel
+ * Allows the owning user to cancel a confirmed booking and restores seats.
+ */
 const cancelBooking = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id);

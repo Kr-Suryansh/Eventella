@@ -1,3 +1,10 @@
+/*
+  File: client/src/index.css
+  Purpose: Global styles and Tailwind utilities for the client app.
+  Notes:
+  - Uses Tailwind layers and custom utility classes for brand look
+  - Defines gradients, buttons, cards, animations used across components
+*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,3 +1,9 @@
+/**
+ * File: client/src/pages/BookingPage.jsx
+ * Purpose: Confirmation step after selecting seats; creates the booking.
+ *
+ * Receives `state` from EventDetails: { event, seats }
+ */
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createBooking } from '../api/bookings';
 import { toast } from 'react-toastify';
@@ -15,6 +21,7 @@ const BookingPage = () => {
 
   const totalPrice = (event.price * seats).toFixed(2);
 
+  // Call server to create booking; navigate to dashboard on success
   const handleConfirmBooking = async () => {
     try {
       await createBooking({ eventId: event._id, seats });

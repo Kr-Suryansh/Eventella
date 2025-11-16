@@ -1,3 +1,7 @@
+/**
+ * File: server/data/events.js
+ * Purpose: Sample event dataset used by seeder for development environments.
+ */
 const events = [
   {
     title: 'In the Lost Lands',

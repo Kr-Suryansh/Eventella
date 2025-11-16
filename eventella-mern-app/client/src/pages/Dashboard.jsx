@@ -1,3 +1,8 @@
+/**
+ * File: client/src/pages/Dashboard.jsx
+ * Purpose: Show current user's bookings with ability to cancel confirmed ones.
+ * Notes: Filters out bookings whose related event has been deleted.
+ */
 import { useState, useEffect } from 'react';
 import { getMyBookings, cancelBooking } from '../api/bookings';
 import LoadingSpinner from '../components/LoadingSpinner';
@@ -8,6 +13,7 @@ const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Load bookings for the current user
   const fetchBookings = async () => {
     try {
       setLoading(true);
@@ -25,6 +31,7 @@ const Dashboard = () => {
     fetchBookings();
   }, []);
 
+  // Confirm and cancel a booking; refresh list after
   const handleCancel = async (id) => {
     if (window.confirm('Are you sure you want to cancel this booking?')) {
       try {

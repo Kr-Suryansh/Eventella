@@ -1,3 +1,4 @@
+// Simple centered spinner used during async loading states
 import React from 'react';
 
 const LoadingSpinner = () => {

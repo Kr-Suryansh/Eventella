@@ -1,3 +1,12 @@
+/**
+ * File: server/models/Event.js
+ * Purpose: Define Event schema — the core domain entity displayed to users.
+ *
+ * Important fields:
+ * - category: limited set to support filtering and UI chips
+ * - availableSeats: used to validate booking capacity
+ * - imageURL: poster/cover image
+ */
 import mongoose from 'mongoose';
 
 const eventSchema = mongoose.Schema(

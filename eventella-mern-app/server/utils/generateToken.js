@@ -1,3 +1,11 @@
+/**
+ * File: server/utils/generateToken.js
+ * Purpose: Sign a short JSON Web Token containing user id and role.
+ *
+ * Notes:
+ * - Token payload: { id, role }
+ * - Expiry: 30 days
+ */
 import jwt from 'jsonwebtoken';
 
 const generateToken = (id, role) => {

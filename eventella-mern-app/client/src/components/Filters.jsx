@@ -1,3 +1,13 @@
+/**
+ * File: client/src/components/Filters.jsx
+ * Purpose: Sidebar filters used on Home/Dashboard to refine event list.
+ *
+ * Props:
+ * - setFilterParams(updater): parent state setter for query params
+ *
+ * Local state tracks selected category, location, and price range; applies to
+ * query parameters consumed by `getEvents`.
+ */
 import React, { useState } from 'react';
 import { FaMusic, FaMapMarkerAlt, FaDollarSign, FaTimes } from 'react-icons/fa';
 
@@ -8,6 +18,7 @@ const Filters = ({ setFilterParams }) => {
   const [activeCategory, setActiveCategory] = useState('');
   const [activeLocation, setActiveLocation] = useState('');
 
+  // Toggle a category filter and inform parent
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
     setFilterParams((prev) => ({
@@ -16,6 +27,7 @@ const Filters = ({ setFilterParams }) => {
     }));
   };
 
+  // Toggle a location filter and inform parent
   const handleLocationChange = (location) => {
     setActiveLocation(location);
     setFilterParams((prev) => ({
@@ -24,6 +36,7 @@ const Filters = ({ setFilterParams }) => {
     }));
   };
 
+  // Set maxPrice upper bound
   const handlePriceChange = (e) => {
     const value = Number(e.target.value);
     setPriceRange(value);
@@ -33,6 +46,7 @@ const Filters = ({ setFilterParams }) => {
     }));
   };
 
+  // Clear all filters to defaults
   const resetFilters = () => {
     setActiveCategory('');
     setActiveLocation('');

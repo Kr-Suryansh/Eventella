@@ -1,3 +1,14 @@
+/**
+ * File: client/src/components/EventForm.jsx
+ * Purpose: Modal form for creating and editing events (admin-only usage).
+ *
+ * Props:
+ * - event: existing event to edit; if null creates new
+ * - onSuccess(): callback after successful create/update
+ * - onCancel(): close the modal without saving
+ *
+ * State: formData mirrors server Event fields and provides inputs for each.
+ */
 import { useState, useEffect } from 'react';
 import { createEvent, updateEvent } from '../api/events';
 import { toast } from 'react-toastify';
@@ -17,6 +28,7 @@ const EventForm = ({ event, onSuccess, onCancel }) => {
 
   const isEditing = !!event;
 
+  // Populate form when editing existing event
   useEffect(() => {
     if (isEditing) {
       setFormData({
@@ -33,11 +45,13 @@ const EventForm = ({ event, onSuccess, onCancel }) => {
     }
   }, [event, isEditing]);
 
+  // Controlled input update handler
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Submit create/update to server and notify parent on success
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

@@ -1,3 +1,7 @@
+/**
+ * File: client/src/pages/ConfirmationPage.jsx
+ * Purpose: Post-booking confirmation screen (lightweight placeholder).
+ */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaCheckCircle } from 'react-icons/fa';

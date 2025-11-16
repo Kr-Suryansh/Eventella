@@ -1,3 +1,9 @@
+/**
+ * File: client/src/pages/AdminDashboard.jsx
+ * Purpose: Admin workspace to manage events and review all bookings.
+ * - Events: Create/Update/Delete via EventForm
+ * - Bookings: Read-only overview across users
+ */
 import { useState, useEffect } from 'react';
 import { getAllBookings } from '../api/bookings';
 import { getEvents, deleteEvent } from '../api/events';
@@ -14,6 +20,7 @@ const AdminDashboard = () => {
   const [showEventForm, setShowEventForm] = useState(false);
   const [editingEvent, setEditingEvent] = useState(null);
 
+  // Load either events or bookings depending on active view
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -35,17 +42,20 @@ const AdminDashboard = () => {
     fetchData();
   }, [view]);
 
+  // Close modal and refresh list after saving
   const handleEventCreatedOrUpdated = () => {
     setShowEventForm(false);
     setEditingEvent(null);
     fetchData(); // Refresh event list
   };
 
+  // Open modal in edit mode
   const handleEditEvent = (event) => {
     setEditingEvent(event);
     setShowEventForm(true);
   };
 
+  // Confirm and delete event, then refresh
   const handleDeleteEvent = async (id) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {

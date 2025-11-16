@@ -1,3 +1,11 @@
+/**
+ * File: server/seeder.js
+ * Purpose: Seed the database with sample users, events, and bookings for development/testing.
+ *
+ * Usage:
+ * - node seeder.js          # import sample data
+ * - node seeder.js -d       # destroy all data
+ */
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
@@ -11,6 +19,7 @@ dotenv.config();
 
 connectDB();
 
+// Insert users (admin + standard users), events, and derived bookings
 const importData = async () => {
   try {
     // Clear existing data
@@ -107,6 +116,7 @@ const importData = async () => {
   }
 };
 
+// Purge all collections (use with caution)
 const destroyData = async () => {
   try {
     console.log('Destroying all data...'.yellow);

@@ -1,3 +1,7 @@
+/**
+ * File: client/src/pages/Login.jsx
+ * Purpose: Authenticate users via email/password and redirect to intended page.
+ */
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
@@ -13,6 +17,7 @@ const Login = () => {
 
   const from = location.state?.from || '/';
 
+  // Attempt login and navigate back to `from` location
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

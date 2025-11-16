@@ -1,3 +1,13 @@
+/**
+ * File: server/models/User.js
+ * Purpose: Define the User schema and model with secure password handling.
+ *
+ * Fields:
+ * - name: display name
+ * - email: unique login identifier
+ * - password: hashed credential (never returned to clients)
+ * - role: 'user' | 'admin' for authorization
+ */
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -27,12 +37,12 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Match user entered password to hashed password in database
+// Match user-entered password to the hashed password in the database
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-// Encrypt password using bcrypt before saving
+// Hash password using bcrypt before saving (only when changed/created)
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();

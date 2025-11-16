@@ -1,3 +1,7 @@
+/**
+ * File: client/src/pages/Register.jsx
+ * Purpose: Create a user account and log in immediately upon success.
+ */
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate, Link } from 'react-router-dom';
@@ -13,6 +17,7 @@ const Register = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
 
+  // Validate and register; navigates to dashboard on success
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {

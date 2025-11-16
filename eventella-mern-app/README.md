@@ -95,4 +95,18 @@ This is a full-stack MERN (MongoDB, Express, React, Node.js) web application for
     ```
 
 5.  **Open the app in your browser:**
-    Vite will provide you with a URL, typically `http://localhost:5173`.
+        Vite will provide you with a URL, typically `http://localhost:5173`.
+
+---
+
+## 📚 Documentation & Code Comments
+
+- In-file comments have been added throughout both `server/` and `client/` to explain:
+    - What each module does and how it connects to others
+    - Purpose of key variables, handlers, middleware, and components
+    - API routes and expected request/response shapes
+- High-level documents:
+    - `docs/ARCHITECTURE.md` — overview of modules, flows, and structure
+    - `docs/CONFIG_GUIDE.md` — explains `package.json` scripts and `.env` variables
+
+Tip: The client expects `VITE_API_URL` for the API base URL (see `client/src/api/api.js`).

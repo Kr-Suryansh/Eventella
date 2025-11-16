@@ -1,8 +1,20 @@
+/**
+ * File: server/controllers/eventController.js
+ * Purpose: Serve public event listings/details and provide admin CRUD operations.
+ *
+ * Filtering (getEvents): supports category, location (fuzzy), maxPrice (<=), and text query `q`
+ * across multiple fields using case-insensitive regex.
+ */
 import Event from '../models/Event.js';
 
 // @desc    Fetch all events
 // @route   GET /api/events
 // @access  Public
+/**
+ * GET /api/events
+ * Query params: category, location, maxPrice, q
+ * Returns: array of events matching filters
+ */
 const getEvents = async (req, res) => {
   const { category, location, q, maxPrice } = req.query;
   const filter = {};
@@ -42,6 +54,10 @@ const getEvents = async (req, res) => {
 // @desc    Fetch single event
 // @route   GET /api/events/:id
 // @access  Public
+/**
+ * GET /api/events/:id
+ * Returns: single event by id
+ */
 const getEventById = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
@@ -59,6 +75,11 @@ const getEventById = async (req, res) => {
 // @desc    Create an event
 // @route   POST /api/events
 // @access  Private/Admin
+/**
+ * POST /api/events (admin)
+ * Body: { title, category, location, date, price, availableSeats, imageURL, description, artist }
+ * Returns: created event document
+ */
 const createEvent = async (req, res) => {
   const {
     title,
@@ -96,6 +117,10 @@ const createEvent = async (req, res) => {
 // @desc    Update an event
 // @route   PUT /api/events/:id
 // @access  Private/Admin
+/**
+ * PUT /api/events/:id (admin)
+ * Partially updates provided fields; preserves existing values when omitted.
+ */
 const updateEvent = async (req, res) => {
   const {
     title,
@@ -136,6 +161,10 @@ const updateEvent = async (req, res) => {
 // @desc    Delete an event
 // @route   DELETE /api/events/:id
 // @access  Private/Admin
+/**
+ * DELETE /api/events/:id (admin)
+ * Removes an event by id.
+ */
 const deleteEvent = async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);

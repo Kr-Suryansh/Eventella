@@ -1,3 +1,12 @@
+/**
+ * File: client/src/pages/Home.jsx
+ * Purpose: Landing page showing hero section, filters, and the event grid.
+ *
+ * State:
+ * - events: fetched from API based on filters and search query
+ * - filterParams: passed to getEvents as query params
+ * - searchQuery/debouncedQuery: free-text search with debounce
+ */
 import { useState, useEffect } from 'react';
 import { getEvents } from '../api/events';
 import EventCard from '../components/EventCard';
@@ -14,6 +23,7 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedQuery = useDebounce(searchQuery, 450);
 
+  // Fetch events whenever filters or debounced search change
   useEffect(() => {
     const fetchEvents = async () => {
       try {
